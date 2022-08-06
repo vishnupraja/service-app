@@ -1,5 +1,8 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+import 'hello.dart';
 
 class Foody extends StatefulWidget {
   const Foody({Key? key}) : super(key: key);
@@ -81,6 +84,7 @@ class _FoodyState extends State<Foody> {
                   )
               ),
               child:ListView(
+                shrinkWrap: true,
                 children: [
                   Column(
                     children: [
@@ -111,7 +115,14 @@ class _FoodyState extends State<Foody> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Text("Shop By Category",style: TextStyle(color: Colors.white),) ,
-                          Text("View All",style: TextStyle(color: Colors.red),)
+                        InkWell(
+                          child: Text("View All",style: TextStyle(color: Colors.red),),
+                          onTap: ()  {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) =>heloo()));
+                          },
+                        )
+
+
                         ],
                       ),
                       SingleChildScrollView(
@@ -129,50 +140,48 @@ class _FoodyState extends State<Foody> {
                       SizedBox(
                         height: 30,
                       ),
-                      SingleChildScrollView(
-
-                        scrollDirection: Axis.horizontal,
-                        child: Padding(
-
-                          padding: const EdgeInsets.only(
-                            left: 10,
-                            right: 10,
+                      CarouselSlider(
+                        items: [
+                          Padding(
+                            padding: EdgeInsets.only(left: 5,right: 5),
+                            child: Image.asset(
+                              'assets/images/50%.png',
+                              height: 250,
+                              width: 330,
+                            ),
                           ),
-                          child: Row(
-
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Image.asset(
-                                'assets/images/50%.png',
-                                height: 250,
-                                width: 330,
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Image.asset(
-                                'assets/images/50%.png',
-                                height: 250,
-                                width: 330,
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-
-                              Image.asset(
-                                'assets/images/50%.png',
-                                height: 250,
-                                width: 330,
-                              ),
-
-                              // Image.asset('images/meeet4.png',height: 30,width: 30,),
-                            ],
+                          Padding(
+                            padding: EdgeInsets.only(left: 5,right: 5),
+                            child: Image.asset(
+                              'assets/images/50%.png',
+                              height: 250,
+                              width: 330,
+                            ),
                           ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 5,right: 5),
+                            child: Image.asset(
+                              'assets/images/50%.png',
+                              height: 250,
+                              width: 330,
+                            ),
+                          ),
+                        ],
+                        options: CarouselOptions(
+                          autoPlay: true,
+                          height: 180.0,
+                          enlargeCenterPage: true,
+                          aspectRatio: 18 /9,
+                          autoPlayCurve: Curves.fastOutSlowIn,
+                          enableInfiniteScroll: true,
+                          autoPlayAnimationDuration: Duration(milliseconds: 800),
+                          viewportFraction:1,
                         ),
                       ),
+                      SizedBox(
+                        height: 20,
+                      ),
+
                       Image.asset("assets/images/chik.png",
                         width: MediaQuery.of(context).size.width,
                       ),

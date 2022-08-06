@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:urban_foody_test/Notification_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -74,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Notification_page()));
+                              builder: (context) => Placeholder()));
                     },
                     child: Image(
                       image: AssetImage('images/notificationicon1.png'),
